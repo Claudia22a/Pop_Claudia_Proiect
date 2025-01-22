@@ -1,0 +1,54 @@
+﻿@page
+@model Pop_Claudia_Proiect.Pages.Reservations.IndexModel
+
+@{
+    ViewData["Title"] = "Reservations";
+}
+
+<h1>Reservations</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].ReservationTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].Table)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].Customer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Reservation) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Table.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Id)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,57 @@
+﻿@page
+@model Pop_Claudia_Proiect.Pages.Tables.IndexModel
+
+@{
+    ViewData["Title"] = "Tables";
+}
+<style>
+    body {
+        background-image: url('tables1.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<h1>Tables</h1>
+
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Table[0].Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Table[0].Seats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Table[0].Restaurant)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Table) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Restaurant.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
